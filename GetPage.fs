@@ -26,8 +26,7 @@ module GetPage =
     let Run([<HttpTrigger(AuthorizationLevel.Function, "get", Route = null)>] req: HttpRequest, 
             log: ILogger,
             [<Blob("html/detail.html", FileAccess.Read)>] detailTemplate: Stream,
-            [<Blob("html/search.html", FileAccess.Read)>] searchTemplate: Stream,
-            context: ExecutionContext) =
+            [<Blob("html/search.html", FileAccess.Read)>] searchTemplate: Stream) =
         
         let getAlbums musician =
             let path = "https://itunes.apple.com/search"
