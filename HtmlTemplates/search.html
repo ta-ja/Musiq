@@ -1,0 +1,81 @@
+<!Doctype>
+<html>
+    <head>
+        <style>
+            .overlay {
+                height: 100%;
+                width: 100%;
+                display: block;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: rgb(0,0,0);
+                background-color: rgba(0,0,0, 0.9); 
+            }
+
+            .overlay-content {
+                position: relative;
+                top: 46%;
+                width: 80%;
+                text-align: center;
+                margin-top: 30px;
+                margin: auto;
+            }
+
+            .overlay input[type=text] {
+                padding: 15px;
+                font-size: 17px;
+                border: none;
+                float: left;
+                width: 80%;
+                background: white;
+            }
+
+            .overlay input[type=text]:hover {
+                background: #f1f1f1;
+            }
+
+            .overlay button {
+                width: 20%;
+                padding: 15px;
+                background: #ddd;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .overlay button:hover {
+                background: #bbb;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="myOverlay" class="overlay">
+            <div class="overlay-content">
+                <form action="">
+                    <input type="hidden" id="hidden-code" name="code">
+                    <input type="text" placeholder="Search.." name="name">
+                    <button type="submit">
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+        <script>
+            function getParameterByName(name) {
+                name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+                return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            }
+
+            (function () {
+            'use strict';
+                var value = getParameterByName('code');
+                if (value !== '')
+                    document.querySelector('#hidden-code').value = value;
+            })();
+        </script>
+    </body>
+</html>
